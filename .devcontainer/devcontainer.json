@@ -6,7 +6,7 @@
 	},
 	"postCreateCommand": ".devcontainer/post-create.sh",
 	"remoteUser": "vscode",
-	"waitFor": "postStartCommand",
+	"waitFor": "postCreateCommand",
 	"remoteEnv": {
 		"CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
 		"WORKSPACE_DIR": "${containerWorkspaceFolder}"
@@ -23,6 +23,6 @@
 	},
 	"mounts": [
 		"source=${devcontainerId}-node-modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
-		"source=${devcontainerId}-claude-code-config,target=/home/node/.claude,type=volume"
+		"source=${devcontainerId}-claude-code-config,target=/home/vscode/.claude,type=volume"
 	]
 }
