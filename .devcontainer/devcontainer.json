@@ -1,8 +1,10 @@
 {
 	"name": "Ubuntu",
 	"image": "mcr.microsoft.com/devcontainers/base:noble",
+	"runArgs": ["--env-file", "${localWorkspaceFolder}/.devcontainer/.env"],
 	"features": {
-		"ghcr.io/devcontainers/features/node:1": {}
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/stu-bell/devcontainer-features/claude-code:0": {}
 	},
 	"postCreateCommand": ".devcontainer/post-create.sh",
 	"remoteUser": "vscode",
