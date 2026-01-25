@@ -1,0 +1,28 @@
+{
+	"name": "Ubuntu",
+	"image": "mcr.microsoft.com/devcontainers/base:noble",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {}
+	},
+	"postCreateCommand": ".devcontainer/post-create.sh",
+	"remoteUser": "vscode",
+	"waitFor": "postCreateCommand",
+	"remoteEnv": {
+		"CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
+		"WORKSPACE_DIR": "${containerWorkspaceFolder}"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"tkit.host-notifier"
+			],
+			"settings": {
+				"hostNotifier.enable": true
+			}
+		}
+	},
+	"mounts": [
+		"source=${devcontainerId}-node-modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+		"source=${devcontainerId}-claude-code-config,target=/home/vscode/.claude,type=volume"
+	]
+}
