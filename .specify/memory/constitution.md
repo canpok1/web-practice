@@ -1,50 +1,152 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+  ============================================================================
+  Sync Impact Report
+  ============================================================================
+  Version Change: N/A (Initial) → 1.0.0
+
+  Added Principles:
+  - I. コード品質 (Code Quality)
+  - II. テスト基準 (Testing Standards)
+  - III. ユーザー体験の一貫性 (UX Consistency)
+  - IV. パフォーマンス要件 (Performance Requirements)
+
+  Added Sections:
+  - 開発プロセス (Development Process)
+  - 品質ゲート (Quality Gates)
+  - Governance
+
+  Removed Sections: N/A (Initial creation)
+
+  Templates Updated:
+  - .specify/templates/plan-template.md: ✅ 既存の Constitution Check セクションと整合
+  - .specify/templates/spec-template.md: ✅ ユーザーストーリーと成功基準が原則と整合
+  - .specify/templates/tasks-template.md: ✅ テスト優先とフェーズ構造が原則と整合
+  - .specify/templates/commands/*.md: ✅ コマンドファイルなし（確認不要）
+
+  Deferred Items: None
+  ============================================================================
+-->
+
+# Web Practice Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. コード品質 (Code Quality)
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+コードベース全体で一貫した高品質なコードを維持する。
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+**必須要件**:
+- すべてのコードは ESLint/Prettier（JavaScript/TypeScript）または言語に適したリンターでフォーマットされなければならない（MUST）
+- 関数・クラス・モジュールは単一責任の原則に従わなければならない（MUST）
+- コードの重複は DRY 原則に基づき最小化されなければならない（MUST）
+- 命名規則はプロジェクト全体で一貫していなければならない（MUST）
+- 複雑なロジックには適切なコメントを付与すべきである（SHOULD）
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+**根拠**: 読みやすく保守しやすいコードは、バグの発見・修正を容易にし、
+チーム間での知識共有を促進する。
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### II. テスト基準 (Testing Standards)
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+テストは品質保証の基盤であり、すべての機能変更にはテストが伴う。
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+**必須要件**:
+- 新機能には対応するテストを作成しなければならない（MUST）
+- テストは独立して実行可能でなければならない（MUST）
+- テストカバレッジは主要なユースケースを網羅すべきである（SHOULD）
+- ユニットテスト、統合テスト、E2E テストを適切に使い分けなければならない（MUST）
+- CI/CD パイプラインでテストが自動実行されなければならない（MUST）
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+**テスト種別の指針**:
+- ユニットテスト: 個別の関数・メソッドのロジック検証
+- 統合テスト: コンポーネント間の連携動作検証
+- E2E テスト: ユーザー視点での完全なフロー検証
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+**根拠**: 自動テストはリグレッションを防ぎ、リファクタリングの安全性を確保し、
+開発者に自信を与える。
+
+### III. ユーザー体験の一貫性 (UX Consistency)
+
+ユーザーインターフェースは一貫した体験を提供しなければならない。
+
+**必須要件**:
+- UI コンポーネントは統一されたデザインシステムに従わなければならない（MUST）
+- インタラクションパターンはアプリケーション全体で一貫していなければならない（MUST）
+- エラーメッセージは明確で、ユーザーが次のアクションを理解できるものでなければならない（MUST）
+- レスポンシブデザインを採用し、様々なデバイスで適切に表示されなければならない（MUST）
+- アクセシビリティ基準（WCAG 2.1 AA レベル）に準拠すべきである（SHOULD）
+
+**一貫性チェックリスト**:
+- 色・タイポグラフィ・スペーシングの統一
+- ボタン・フォーム・ナビゲーションの挙動統一
+- ローディング状態とエラー状態の表示統一
+
+**根拠**: 一貫した UX はユーザーの学習コストを下げ、信頼感を醸成し、
+製品の使いやすさを向上させる。
+
+### IV. パフォーマンス要件 (Performance Requirements)
+
+アプリケーションは定義されたパフォーマンス基準を満たさなければならない。
+
+**必須要件**:
+- 初期ページロードは 3 秒以内でなければならない（MUST）
+- ユーザー操作へのレスポンスは 100ms 以内を目標とすべきである（SHOULD）
+- API レスポンスタイムは p95 で 500ms 以内でなければならない（MUST）
+- メモリリークがあってはならない（MUST）
+- 大量データ処理時もスムーズな動作を維持しなければならない（MUST）
+
+**計測指標**:
+- Core Web Vitals (LCP, FID, CLS)
+- Time to First Byte (TTFB)
+- Time to Interactive (TTI)
+
+**根拠**: パフォーマンスはユーザー体験に直結し、ビジネス指標（コンバージョン率、
+ユーザー満足度）に大きな影響を与える。
+
+## 開発プロセス (Development Process)
+
+開発フローにおける品質確保のためのプロセスを定義する。
+
+**ブランチ戦略**:
+- `main` ブランチは常にデプロイ可能な状態を維持する
+- 機能開発は `feature/` プレフィックスのブランチで行う
+- プルリクエストは最低 1 名のレビューを必要とする
+
+**コードレビュー基準**:
+- 本 Constitution の原則への準拠確認
+- セキュリティ上の懸念事項の確認
+- テストの妥当性確認
+- パフォーマンスへの影響評価
+
+## 品質ゲート (Quality Gates)
+
+マージ前に満たすべき品質基準を定義する。
+
+**自動チェック**:
+- [ ] リンター/フォーマッターのエラーがないこと
+- [ ] すべてのテストが通過すること
+- [ ] ビルドが成功すること
+
+**レビューチェック**:
+- [ ] コードレビューが完了していること
+- [ ] 本 Constitution の原則に準拠していること
+- [ ] 必要なドキュメントが更新されていること
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+本 Constitution はプロジェクトの開発指針として最優先される。
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**改訂プロセス**:
+- 改訂提案はプルリクエストとして提出する
+- チームメンバーによるレビューと承認を必要とする
+- 承認後、バージョン番号を更新する
+
+**バージョニング規則**:
+- MAJOR: 原則の削除または根本的な再定義
+- MINOR: 新しい原則・セクションの追加、既存内容の実質的拡張
+- PATCH: 文言の明確化、誤字修正、非実質的な改善
+
+**コンプライアンス確認**:
+- すべてのプルリクエストで本 Constitution への準拠を確認する
+- 定期的なコードベースレビューで原則の遵守状況を評価する
+
+**Version**: 1.0.0 | **Ratified**: 2026-01-25 | **Last Amended**: 2026-01-25
