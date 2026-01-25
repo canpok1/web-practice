@@ -4,7 +4,8 @@
 	"runArgs": ["--env-file", "${localWorkspaceFolder}/.devcontainer/.env"],
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {},
-		"ghcr.io/stu-bell/devcontainer-features/claude-code:0": {}
+		"ghcr.io/stu-bell/devcontainer-features/claude-code:0": {},
+		"ghcr.io/jsburckhardt/devcontainer-features/uv:1": {}
 	},
 	"postCreateCommand": ".devcontainer/post-create.sh",
 	"remoteUser": "vscode",
