@@ -1,0 +1,63 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(cp:*)",
+      "Bash(done)",
+      "Bash(echo:*)",
+      "Bash(for:*)",
+      "Bash(git add:*)",
+      "Bash(git branch:*)",
+      "Bash(git commit:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git push:*)",
+      "Bash(git rm:*)",
+      "Bash(git status:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(jq:*)",
+      "Bash(ls:*)",
+      "Bash(make:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(npm ci)",
+      "Bash(npm install)",
+      "Bash(npm test:*)",
+      "Bash(tail:*)",
+      "Bash(test:*)",
+      "Bash(touch:*)",
+      "Bash(tree:*)",
+      "Bash(while:*)",
+      "WebSearch",
+      "mcp__github__issue_read",
+      "mcp__github__issue_write",
+      "mcp__github__list_pull_requests",
+      "mcp__github__search_pull_requests",
+      "mcp__github__pull_request_read",
+      "mcp__github__create_pull_request"
+    ],
+    "deny": [
+      "Bash(git add --all)",
+      "Bash(git add .)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git rebase:*)",
+      "Bash(npm run deploy)",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)",
+      "Read(.env)",
+      "Write(.env)"
+    ],
+    "ask": [
+      "Bash(git reset:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "github"
+  ],
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
+  }
+}

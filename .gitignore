@@ -140,3 +140,6 @@ vite.config.ts.timestamp-*
 
 # notify file
 host-notifier.json
+
+# claude setting file
+settings.local.json

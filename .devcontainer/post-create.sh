@@ -1,4 +1,4 @@
 #!/bin/sh
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# Set up Claude Code
-curl -fsSL https://claude.ai/install.sh | bash
+sudo chown vscode:vscode ${SCRIPT_DIR}/../node_modules -R
