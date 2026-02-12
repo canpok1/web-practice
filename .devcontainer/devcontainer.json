@@ -1,16 +1,17 @@
 {
 	"name": "Ubuntu",
-	"image": "mcr.microsoft.com/devcontainers/base:noble",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
 	"runArgs": ["--env-file", "${localWorkspaceFolder}/.devcontainer/.env"],
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {},
-		"ghcr.io/stu-bell/devcontainer-features/claude-code:0": {}
+		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
 	"postCreateCommand": ".devcontainer/post-create.sh",
 	"remoteUser": "vscode",
 	"waitFor": "postCreateCommand",
 	"remoteEnv": {
-		"CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
 		"WORKSPACE_DIR": "${containerWorkspaceFolder}"
 	},
 	"customizations": {
