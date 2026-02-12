@@ -4,9 +4,19 @@ import { dirname } from "node:path";
 
 const referenceUrl = process.env.REFERENCE_URL;
 const devPath = process.env.DEV_PATH;
-const threshold = process.env.DIFF_THRESHOLD
-  ? parseFloat(process.env.DIFF_THRESHOLD)
-  : undefined;
+let threshold;
+
+if (!referenceUrl || !devPath) {
+  throw new Error("REFERENCE_URL と DEV_PATH は必須です");
+}
+
+if (process.env.DIFF_THRESHOLD) {
+  const parsed = Number(process.env.DIFF_THRESHOLD);
+  if (Number.isNaN(parsed) || parsed < 0 || parsed > 1) {
+    throw new Error("DIFF_THRESHOLD は0〜1の数値で指定してください");
+  }
+  threshold = parsed;
+}
 
 test("見本ページとの比較", async ({ page }, testInfo) => {
   const snapshotName = "reference.png";
