@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Webサイト作成の練習",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite --host 0.0.0.0"
   },
   "keywords": [],
   "author": "",
