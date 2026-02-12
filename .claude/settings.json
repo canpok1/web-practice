@@ -6,6 +6,12 @@
       "Bash(done)",
       "Bash(echo:*)",
       "Bash(for:*)",
+      "Bash(gh api *)",
+      "Bash(gh issue *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh pr view *)",
       "Bash(git add:*)",
       "Bash(git branch:*)",
       "Bash(git commit:*)",
@@ -29,13 +35,7 @@
       "Bash(touch:*)",
       "Bash(tree:*)",
       "Bash(while:*)",
-      "WebSearch",
-      "mcp__github__issue_read",
-      "mcp__github__issue_write",
-      "mcp__github__list_pull_requests",
-      "mcp__github__search_pull_requests",
-      "mcp__github__pull_request_read",
-      "mcp__github__create_pull_request"
+      "WebSearch"
     ],
     "deny": [
       "Bash(git add --all)",
@@ -58,6 +58,15 @@
     "github"
   ],
   "enabledPlugins": {
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "base-tools@canpok1-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "canpok1-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "canpok1/claude-code-plugins"
+      }
+    }
   }
 }
